@@ -8,6 +8,7 @@ const CountryContainer = () => {
     const [countries, setCountries] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [favourites, setFavourite] = useState([]);
+    const [showCountryList, setCountryList] = useState(true);
 
     useEffect(() => {
         getCountries();
@@ -23,6 +24,7 @@ const CountryContainer = () => {
     
     const onCountrySelected = function(country){
         setSelectedCountry(country);
+        setCountryList(false);
 
     }
   
@@ -32,12 +34,21 @@ const CountryContainer = () => {
         setFavourite(favourites);
         console.log(favourites);
     }
-
+    
+    // const FavList = () => {
+    // <ul>
+    // {favourites.map(country =>(
+    //     <li key={country.id}>
+    //         <div>{country.name.common}</div>
+    //         </li>
+    // ))}
+    // </ul>
+    // }
     return(
         <> 
+        <FavouritesList favourites={favourites} population={favourites.population} onCountrySelected={onCountrySelected} addToFavourites={addToFavourites}/>
         {selectedCountry ? <CountryDetail selectedCountry={selectedCountry}/> : null}
-        <FavouritesList favourites={favourites} population={favourites.population} onCountrySelected={onCountrySelected}/>
-        <CountryList countries={countries} population={countries.population} onCountrySelected={onCountrySelected} addToFavourites={addToFavourites}/>
+        {showCountryList ? <CountryList countries={countries} population={countries.population} onCountrySelected={onCountrySelected} addToFavourites={addToFavourites}/> : null}
         
         </>
     )
