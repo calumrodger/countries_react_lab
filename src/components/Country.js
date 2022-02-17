@@ -23,7 +23,7 @@ const Country = ({country, onCountryClick, addToFavourites}) => {
     <p onClick={handleClick}>
         Name: {country.name.official}<br></br>
     Population: {country.population}  </p>
-    <button onClick={handleFavClick}>Add to favourites</button>
+    <button onClick={handleFavClick}>Add</button>
     </>
         
     )}

@@ -11,7 +11,6 @@ const FavouritesList = ({favourites, onCountrySelected}) => {
     return (
         <ul>
             {FavouriteItems}
-            test
         </ul>
     )
 }

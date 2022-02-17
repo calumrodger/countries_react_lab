@@ -3,6 +3,7 @@ import CountryList from '../components/CountryList';
 import Country from '../components/Country';
 import CountryDetail from '../components/CountryDetail';
 import FavouritesList from '../components/FavouritesList';
+import './CountryContainer.css'
 
 const CountryContainer = () => {
     const [countries, setCountries] = useState([]);
@@ -46,10 +47,15 @@ const CountryContainer = () => {
     // }
     return(
         <> 
+        <div class="favourites">
         <FavouritesList favourites={favourites} population={favourites.population} onCountrySelected={onCountrySelected} addToFavourites={addToFavourites}/>
+        </div>
+        <div class="selected">
         {selectedCountry ? <CountryDetail selectedCountry={selectedCountry}/> : null}
+        </div>
+        <div class="all">
         {showCountryList ? <CountryList countries={countries} population={countries.population} onCountrySelected={onCountrySelected} addToFavourites={addToFavourites}/> : null}
-        
+        </div>
         </>
     )
 }
